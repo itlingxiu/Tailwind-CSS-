@@ -7,6 +7,7 @@ type Section = {
   text?: string
   lang?: string
   code?: string
+  headers?: string[]
   rows?: Row[]
 }
 
@@ -36,6 +37,58 @@ const flat = computed(() => docs.groups.flatMap((group) => group.items.map((item
 const index = computed(() => flat.value.findIndex((item) => item.slug === slug.value))
 const previous = computed(() => (index.value > 0 ? flat.value[index.value - 1] : null))
 const next = computed(() => (index.value >= 0 && index.value < flat.value.length - 1 ? flat.value[index.value + 1] : null))
+
+const officialPangram = '敏捷的棕色狐狸跳过了那只懒狗。'
+
+const previewSamples: Record<string, string> = {
+  installation: '在模板里写上类名，构建时会生成对应的静态 CSS。',
+  'installation/using-vite': '你好，世界！',
+  'installation/using-postcss': '已有 PostCSS 流水线时，装上插件即可。',
+  'installation/tailwind-cli': '没有前端框架时，用命令行编译 CSS。',
+  'installation/framework-guides': '主流框架都可以在几分钟内接上。',
+  'installation/play-cdn': '浏览器里的 Tailwind',
+  'editor-setup': '用编辑器插件补全类名、预览颜色，并整理类名顺序。',
+  compatibility: '了解浏览器支持情况，以及与其他工具一起使用时的兼容性。',
+  'upgrade-guide': '把 Tailwind CSS 项目从 v3 升级到 v4。',
+  'styling-with-utility-classes': '保存更改',
+  'hover-focus-and-other-states': '悬停或聚焦时再变色',
+  theme: '颜色、字体和断点都写在 CSS 主题里。',
+  'adding-custom-styles': '实用类不够用时，再补一层自定义 CSS。',
+  'detecting-classes-in-source-files': '类名必须完整写在源码里，扫描器才能找到。',
+  'functions-and-directives': '用指令和函数扩展主题与样式。',
+  preflight: '预检会抹平各浏览器不一致的默认样式。',
+  columns: '这段文字会分成多列排布，阅读方式更接近报刊。',
+  'break-after': '分页或分列时，避免在这个元素后面断开。',
+  'break-before': '分页或分列时，避免在这个元素前面断开。',
+  'box-decoration-break': '换行之后，每一段都保留自己的背景和内边距。',
+  'line-clamp': '这是一段较长的说明。超出指定行数后，多余文字会被截断，并在末尾显示省略号。',
+  'text-overflow': '这是一段会被截断的说明，超出容器宽度后以省略号结尾。',
+  'text-wrap': '把标题写成两行，让每一行的宽度更加均衡。',
+  'white-space': '这段文字保持在同一行里',
+  content: '下一项',
+  'background-clip': '渐变只出现在文字上',
+  'text-shadow': '带阴影的文字',
+  'accent-color': '表单控件的强调色',
+  appearance: '去掉浏览器自带的控件外观',
+  'caret-color': '输入时光标使用主题色',
+  cursor: '指针悬停时显示手型',
+  'field-sizing': '输入框宽度跟着内容走',
+  resize: '可以沿垂直方向拖拽调整大小',
+  'user-select': '点击即可选中整段文字',
+}
+
+const previewSample = computed(() => {
+  const current = page.value
+  if (!current || current.preview !== 'text') return ''
+  return previewSamples[current.slug] || (current.group === '排版' ? officialPangram : '')
+})
+
+const showPreview = computed(() => {
+  const current = page.value
+  if (!current?.preview) return false
+  if (current.preview === 'text') return Boolean(previewSample.value)
+  return true
+})
 
 const headings = computed(() =>
   (page.value?.sections ?? [])
@@ -101,7 +154,7 @@ useSeoMeta({
         <p class="text-sm font-medium text-sky-600 dark:text-sky-400">{{ page.group }}</p>
         <h1 class="mt-2 text-4xl font-semibold tracking-tight text-gray-950 dark:text-white">{{ page.title }}</h1>
         <p class="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">{{ page.summary }}</p>
-        <DocsPreview :preview="page.preview" :demo="page.demo" />
+        <DocsPreview v-if="showPreview" :preview="page.preview" :demo="page.demo" :sample="previewSample" />
         <div class="docs-prose">
           <template v-for="(section, sectionIndex) in page.sections" :key="sectionIndex">
             <h2 v-if="section.type === 'h2'" :id="anchor(section.text || '')">{{ section.text }}</h2>
@@ -115,9 +168,9 @@ useSeoMeta({
               <table class="w-full min-w-[36rem] text-left text-sm">
                 <thead class="bg-gray-50 text-gray-500 dark:bg-white/5">
                   <tr>
-                    <th class="px-4 py-2 font-medium">类</th>
-                    <th class="px-4 py-2 font-medium">CSS</th>
-                    <th class="px-4 py-2 font-medium">说明</th>
+                    <th class="px-4 py-2 font-medium">{{ section.headers?.[0] || '类' }}</th>
+                    <th class="px-4 py-2 font-medium">{{ section.headers?.[1] || 'CSS' }}</th>
+                    <th class="px-4 py-2 font-medium">{{ section.headers?.[2] || '说明' }}</th>
                   </tr>
                 </thead>
                 <tbody>

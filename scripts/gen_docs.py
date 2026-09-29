@@ -52,8 +52,11 @@ def code(lang, body):
     return {"type": "code", "lang": lang, "code": body.strip("\n")}
 
 
-def table(rows):
-    return {"type": "table", "rows": [{"class": a, "css": b, "note": c} for a, b, c in rows]}
+def table(rows, headers=None):
+    data = {"type": "table", "rows": [{"class": a, "css": b, "note": c} for a, b, c in rows]}
+    if headers:
+        data["headers"] = list(headers)
+    return data
 
 
 def tip(text):
@@ -95,7 +98,7 @@ page("installation", "安装 Tailwind CSS", "Tailwind 会扫描模板里的类�
         ("PostCSS 插件", "@tailwindcss/postcss", "适合已有 PostCSS 流水线"),
         ("Tailwind CLI", "@tailwindcss/cli", "不依赖前端框架"),
         ("浏览器 CDN", "@tailwindcss/browser", "只适合原型，不要用于生产"),
-    ]),
+    ], ("方式", "包名", "说明")),
     tip("生产环境请使用构建工具。CDN 会在浏览器里编译，体积和缓存都不如静态 CSS。"),
 ])
 

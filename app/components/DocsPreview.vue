@@ -2,13 +2,14 @@
 defineProps<{
   preview: string
   demo: string
+  sample?: string
 }>()
 </script>
 
 <template>
   <div class="not-prose my-6 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-white/10 dark:bg-white/5">
     <div v-if="preview === 'text'" class="rounded-xl bg-white p-6 dark:bg-gray-950">
-      <p class="text-gray-950 dark:text-white" :class="demo">敏捷的棕色狐狸跳过懒狗。The quick brown fox jumps.</p>
+      <p class="text-gray-950 dark:text-white" :class="demo">{{ sample || '敏捷的棕色狐狸跳过了那只懒狗。' }}</p>
     </div>
     <div v-else-if="preview === 'flex'" class="flex gap-2 rounded-xl bg-white p-4 dark:bg-gray-950" :class="demo">
       <div class="rounded-lg bg-sky-500 px-3 py-6 text-xs text-white">一</div>

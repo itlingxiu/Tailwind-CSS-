@@ -922,6 +922,7 @@
         },
         {
           "type": "table",
+          "headers": ["方式", "包名", "说明"],
           "rows": [
             {
               "class": "Vite 插件",
