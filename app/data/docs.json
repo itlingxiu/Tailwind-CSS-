@@ -957,7 +957,7 @@
       "title": "使用 Vite 安装",
       "summary": "把 Tailwind 作为 Vite 插件接入，是目前最顺畅的安装方式。",
       "group": "开始使用",
-      "demo": "text-3xl font-bold tracking-tight text-sky-600",
+      "demo": "text-3xl font-bold underline",
       "preview": "text",
       "sections": [
         {
@@ -1011,7 +1011,7 @@
         {
           "type": "code",
           "lang": "html",
-          "code": "<h1 class=\"text-3xl font-bold tracking-tight text-gray-950\">\n  你好，Tailwind\n</h1>"
+          "code": "<h1 class=\"text-3xl font-bold underline\">\n  你好，世界！\n</h1>"
         },
         {
           "type": "tip",
@@ -1024,7 +1024,7 @@
       "title": "使用 PostCSS 安装",
       "summary": "已有 PostCSS 流水线时，安装 PostCSS 插件即可。",
       "group": "开始使用",
-      "demo": "",
+      "demo": "text-3xl font-bold underline",
       "preview": "text",
       "sections": [
         {
@@ -1065,7 +1065,7 @@
       "title": "使用 Tailwind CLI",
       "summary": "没有 Vite 或 PostCSS 时，可以用独立命令行编译 CSS。",
       "group": "开始使用",
-      "demo": "",
+      "demo": "text-3xl font-bold underline",
       "preview": "text",
       "sections": [
         {
@@ -1158,7 +1158,7 @@
       "title": "Play CDN",
       "summary": "浏览器里直接编译 Tailwind，适合试想法，不适合上线。",
       "group": "开始使用",
-      "demo": "text-3xl font-semibold",
+      "demo": "text-3xl font-bold underline",
       "preview": "text",
       "sections": [
         {
@@ -1168,7 +1168,7 @@
         {
           "type": "code",
           "lang": "html",
-          "code": "<!doctype html>\n<html>\n  <head>\n    <meta charset=\"utf-8\" />\n    <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>\n  </head>\n  <body>\n    <h1 class=\"text-3xl font-semibold\">浏览器里的 Tailwind</h1>\n  </body>\n</html>"
+          "code": "<!doctype html>\n<html>\n  <head>\n    <meta charset=\"utf-8\" />\n    <script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script>\n  </head>\n  <body>\n    <h1 class=\"text-3xl font-bold underline\">你好，世界！</h1>\n  </body>\n</html>"
         },
         {
           "type": "tip",

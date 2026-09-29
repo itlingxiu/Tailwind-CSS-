@@ -41,12 +41,12 @@ const next = computed(() => (index.value >= 0 && index.value < flat.value.length
 const officialPangram = '敏捷的棕色狐狸跳过了那只懒狗。'
 
 const previewSamples: Record<string, string> = {
-  installation: '在模板里写上类名，构建时会生成对应的静态 CSS。',
-  'installation/using-vite': '你好，世界！',
-  'installation/using-postcss': '已有 PostCSS 流水线时，装上插件即可。',
-  'installation/tailwind-cli': '没有前端框架时，用命令行编译 CSS。',
-  'installation/framework-guides': '主流框架都可以在几分钟内接上。',
-  'installation/play-cdn': '浏览器里的 Tailwind',
+  installation: 'Tailwind 会扫描 HTML、JavaScript 组件和其他模板里的类名，生成对应样式，并写成一份静态 CSS。它很快、很灵活、很可靠，而且没有运行时。',
+  'installation/using-vite': '把 Tailwind CSS 作为 Vite 插件安装，是接入 Laravel、SvelteKit、React Router、Nuxt 和 SolidJS 最顺畅的方式。',
+  'installation/using-postcss': '把 Tailwind CSS 作为 PostCSS 插件安装，是接入 Next.js 和 Angular 最顺畅的方式。',
+  'installation/tailwind-cli': '从零开始最快的方式是使用 Tailwind CLI。不想安装 Node.js 时，也可以用独立的可执行文件。',
+  'installation/framework-guides': '这些指南说明在常见框架和环境里安装 Tailwind CSS 的推荐做法。',
+  'installation/play-cdn': '用 Play CDN 可以直接在浏览器里试用 Tailwind，不需要构建。它只适合开发，不要用于生产。',
   'editor-setup': '用编辑器插件补全类名、预览颜色，并整理类名顺序。',
   compatibility: '了解浏览器支持情况，以及与其他工具一起使用时的兼容性。',
   'upgrade-guide': '把 Tailwind CSS 项目从 v3 升级到 v4。',

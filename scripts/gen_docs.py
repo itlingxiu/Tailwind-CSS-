@@ -119,11 +119,11 @@ export default defineConfig({
     p("在入口 CSS 里导入 Tailwind。不需要再写三条 @tailwind 指令。"),
     code("css", '@import "tailwindcss";'),
     h2("在 HTML 里使用"),
-    code("html", """<h1 class="text-3xl font-bold tracking-tight text-gray-950">
-  你好，Tailwind
+    code("html", """<h1 class="text-3xl font-bold underline">
+  你好，世界！
 </h1>"""),
     tip("Nuxt 项目把 CSS 放到 nuxt.config 的 css 数组，并把插件加进 vite.plugins。本站就是这样接上的。"),
-], demo="text-3xl font-bold tracking-tight text-sky-600", preview="text")
+], demo="text-3xl font-bold underline", preview="text")
 
 page("installation/using-postcss", "使用 PostCSS 安装", "已有 PostCSS 流水线时，安装 PostCSS 插件即可。", G, [
     h2("安装"),
@@ -137,7 +137,7 @@ page("installation/using-postcss", "使用 PostCSS 安装", "已有 PostCSS 流�
     h2("引入样式"),
     code("css", '@import "tailwindcss";'),
     p("然后照常启动你的开发服务器。保存模板文件时，只有用到的类会被写进产物。"),
-])
+], demo="text-3xl font-bold underline")
 
 page("installation/tailwind-cli", "使用 Tailwind CLI", "没有 Vite 或 PostCSS 时，可以用独立命令行编译 CSS。", G, [
     h2("安装"),
@@ -146,7 +146,7 @@ page("installation/tailwind-cli", "使用 Tailwind CLI", "没有 Vite 或 PostCS
     code("bash", 'npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch'),
     p("input.css 里只需要一行 @import \"tailwindcss\";。把生成的 output.css 链接到 HTML 即可。"),
     code("html", '<link rel="stylesheet" href="/dist/output.css" />'),
-])
+], demo="text-3xl font-bold underline")
 
 page("installation/framework-guides", "框架指南", "主流框架都可以在几分钟内接上 Tailwind CSS v4。", G, [
     h2("Nuxt"),
@@ -180,7 +180,7 @@ page("installation/play-cdn", "Play CDN", "浏览器里直接编译 Tailwind，�
   </body>
 </html>"""),
     tip("本站的演练场页面使用的就是这套浏览器构建，方便你立刻看到类名效果。"),
-], demo="text-3xl font-semibold", preview="text")
+], demo="text-3xl font-bold underline", preview="text")
 
 page("editor-setup", "编辑器配置", "装上智能提示之后，类名、变体和主题变量都可以自动补全。", G, [
     h2("Visual Studio Code"),
